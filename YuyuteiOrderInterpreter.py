@@ -89,6 +89,7 @@ while True:
         while True:
             event, values = window.read()
             if event in (None, 'Ok'):
+                window.close()
                 break
 
 
@@ -158,7 +159,7 @@ layout = [
 # url[6] is total price
 # url[7] is comments
 
-window = sg.Window('Progress Meter', layout, keep_on_top=True)
+window = sg.Window('Progress Meter', layout)
 progress_bar = window['progressbar']
 window.read(timeout=0)
 
