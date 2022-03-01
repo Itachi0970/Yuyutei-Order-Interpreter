@@ -305,7 +305,6 @@ for url in list_of_urls:
     cart_page = session.get("https://yuyu-tei.jp/sell_cart/cart.php")
     soup = BeautifulSoup(cart_page.content, 'html.parser')
     newAmounts = soup.find('div', class_='feedback_box message_block error_message')
-    print(newAmounts)
     if type(newAmounts) != NoneType:
         newAmounts = newAmounts.find_all('li')
         for amount in newAmounts:
