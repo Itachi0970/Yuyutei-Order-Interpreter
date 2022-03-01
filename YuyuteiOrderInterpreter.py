@@ -46,7 +46,7 @@ window.close()
 
 while True:
     layout = [  [sg.Text('Share the spreadsheet with this email before continuing (Even if your sheet is public):'), sg.InputText(email_to_share_to, use_readonly_for_disable=True, disabled=True, key='-IN-'), sg.Button('Copy')],
-                [sg.Text('Enter the name of the spreadsheet:'), sg.InputText("YYT Test 2")],
+                [sg.Text('Enter the name of the spreadsheet:'), sg.InputText()],
                 [sg.Text('Enter your Google email to see a list of discrepancies (optional):'), sg.InputText()],
                 [sg.Button('Ok'), sg.Button('Quit')],
                 [sg.Button('Submit', visible=False, bind_return_key=True)]]
@@ -262,7 +262,9 @@ for url in list_of_urls:
             price_string = price.find('b').contents[0]
             price_string = price_string.split("円",1)[0]
             prices_extracted.append(price_string)
-        closest_price = min(prices_extracted, key=lambda list_value : abs(int(list_value) - int(url[4])))
+        closest_price = 0
+        if len(prices_extracted) >= 1:
+            closest_price = min(prices_extracted, key=lambda list_value : abs(int(list_value) - int(url[4])))
             
 
         # Card could not be found, find the closest price, record it, then check the damaged section.
